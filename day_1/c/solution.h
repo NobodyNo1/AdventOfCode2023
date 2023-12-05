@@ -52,8 +52,19 @@ void resetCheckingIds(int *checkingIds) {
     for(int i = 0;  i<9; i++) checkingIds[i] = 0;
 }
 
-int solution(int part) {
-    const char* filePath = "input.txt";
+/*
+    Solution is very basic:
+        1. Iterate each character
+        2.1. Check if number, and update first and last digit varibles
+            a. if character is digit
+            b. if array that checks "digit words" (digits spelled out) matched
+        2.2. Check if End of line
+            - combine digits to one number (firstDigit * 10 + lastDigit)
+            - clear state and go to 1. 
+        2.3. If end of line exit loop, do logic with last values
+        3. print value and exit
+*/
+int solution(const char* filePath, int part) {
     FILE *filePtr = fopen(filePath, "r");
     if (!filePtr) {
         printf("ERROR: Failed to open input file: '%s'", filePath);

@@ -21,11 +21,13 @@ Adding these together produces 142.
 */
 #include "solution.h"
 #include "stdio.h"
+const char* filePath = "../input/input.txt";
 
 int run(int part){
-    int result = solution(part);
+    int result = solution(filePath, part);
     if(result < 0) return -1;
     printf("Part %d | result: %d\n", part, result);
+    return 0;
 }
 
 int main() {
