@@ -161,9 +161,11 @@ int solve(int part) {
         partOne(seedsSize, seedsBuffer, mapSizes, maps);
     else if(part == PART_TWO)
         partTwo2(seedsSize, seedsBuffer, mapSizes, maps);
-        // partTwo(seedsSize, seedsBuffer, mapSizes, maps);
     // [END]  MAPPING DATA
-    
+    for (size_t i = 0; i < MAP_SIZE; i++)
+    {
+        free(maps[i]);
+    }
     return EXIT_SUCCESS;
 }
 
