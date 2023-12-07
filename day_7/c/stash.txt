@@ -1,0 +1,21 @@
+// if(i == 1) {
+    //     return printf("Five of kind\n");
+    // }
+    // if(i == 2) {
+    //     if(highest == 4)
+    //         return printf("Four of kind\n");
+    //     else
+    //         return printf("Full house  \n");
+    // }
+    // if(i == 3) {
+    //     if(highest == 3)
+    //         return printf("Three of kind\n");
+    //     else
+    //         return printf("Two pair\n");
+    // }
+    // if(i == 4) {
+    //     return printf("Pair\n");
+    // }
+    // if(i == 5) {
+    //     return printf("High card\n");
+    // }
