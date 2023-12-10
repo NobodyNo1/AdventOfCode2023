@@ -36,9 +36,6 @@ void add_item(Slice* slice, void* data) {
 
 void clean_content(Slice* slice) {
     slice->size = 0;
-    // for(int i = 0; i < slice->size; ++i) {
-    //     slice[]
-    // }
 }
 
 #endif /* SLICE_H */
