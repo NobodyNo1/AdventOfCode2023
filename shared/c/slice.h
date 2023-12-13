@@ -26,12 +26,19 @@ Slice create_slice(int initialCapacity) {
     };
 }
 
-
 Slice* copy_slice(Slice slice) {
     Slice* new_slice = (Slice*) malloc(sizeof(Slice));
-    new_slice->capacity = slice;
+    new_slice->capacity = slice.capacity;
     new_slice->data = slice.data;
     new_slice->size = slice.size;
+    return new_slice;
+}
+
+Slice* new_slice(int initialCapacity) {
+    Slice* new_slice = (Slice*) malloc(sizeof(Slice));
+    new_slice->capacity = initialCapacity;
+    new_slice->data = (void**) malloc(initialCapacity * sizeof(void*));
+    new_slice->size = 0;
     return new_slice;
 }
 
@@ -41,14 +48,35 @@ void add_item(Slice* slice, void* data) {
     //     printf("can't fit data, please allocate and put pointer to data");
     //     return;
     // }
+    // printf("cap: %d, ", slice->capacity);
+    // printf("size: %d\n",slice->size);
     if(slice->capacity <= slice->size) {
         int cap = slice->capacity;
         slice->capacity += slice->capacity/2;
         // printf("grow cap: %d -> %d \n", cap, slice->capacity);
         slice->data = (void**) realloc(slice->data, slice->capacity * sizeof(void*));
     }
+    // printf("Put data\n");
     slice->data[slice->size] = data;
+    // printf("Increase size\n");
     slice->size++;
+    // printf("Done\n");
+}
+
+void remove_item(Slice* slice, void* data) {
+    if(slice->size <= 0) {
+        return;
+    }
+    int i = 0;
+    while(i < slice->size) {
+        if(slice->data[i] == data) break;
+        i++;
+    }
+    if(i == slice->size) return;
+    for(int j = i; j < slice->size-1; j++){
+        slice->data[j] = slice->data[j+1]; 
+    }
+    slice->size -= 1;
 }
 
 bool contains(Slice* slice, void* data) {
