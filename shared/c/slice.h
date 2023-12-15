@@ -73,6 +73,17 @@ void remove_item(Slice* slice, void* data) {
         i++;
     }
     if(i == slice->size) return;
+    slice->data[i] = NULL;
+    // if(i == 0) {
+    //     slice->data[i] = NULL;
+    //     slice->size -= 1;
+    //     return;
+    // }
+    // if(i == slice->size - 1) {
+    //     slice->data[i] = NULL;
+    //     slice->size -= 1;
+    //     return;
+    // }
     for(int j = i; j < slice->size-1; j++){
         slice->data[j] = slice->data[j+1]; 
     }

@@ -114,6 +114,32 @@ File2d get_2d_file(const char* file_name) {
     };
 }
 
+void print_char_arr(int* items, int cols, int rows) {
+    for (int i = 0; i < rows; i++)
+    {
+        int local_result = 0;
+        for (int j = 0; j < cols; j++)
+        {   
+            int idx = i*cols + j;
+            putchar(items[idx]);
+        }
+        printf("\n");
+    }
+}
+
+void print_file2d(File2d file2d) {
+    print_char_arr(file2d.items, file2d.cols, file2d.rows);
+}
+
+// text should be null terminated
+bool text_equals(char* a, char* b) {
+    int i = 0;
+    while(a[i] != '\0' && b[i] != '\0'){
+        if(a[i] != b[i]) return false;
+        i++;
+    }
+    return a[i] == b[i];
+}
 
 typedef struct {
     long row;
@@ -126,7 +152,7 @@ typedef struct {
 } Position2D;
 
 int pos_to_idx(Position2D pos, int max_cols) {
-    asIdx(pos.col, pos.row, max_cols);
+    return asIdx(pos.col, pos.row, max_cols);
 }
 
 #endif /* SHARED_H */
